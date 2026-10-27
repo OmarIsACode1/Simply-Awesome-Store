@@ -1,6 +1,10 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
+    background-image: url(robot.png);
+    background-size: cover; /* La imagen cubrirá toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita en mosaico */
+    background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
     margin: 0;
     padding: 20px;
     display: flex;
@@ -8,10 +12,11 @@ body {
 }
 
 .container {
-    background: white;
+    background: rgba(255, 255, 255, 0.25); /* Blanco con 25% de opacidad */
+    backdrop-filter: blur(5px);             /* Efecto difuminado sutil detrás de la caja */
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 650px;
 }
