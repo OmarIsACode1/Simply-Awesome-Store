@@ -13,7 +13,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 500px;
+    max-width: 650px;
 }
 
 h1 {
@@ -31,11 +31,19 @@ h1 {
 .form-group input[type="text"] {
     flex: 2; /* Ocupa más espacio el nombre */
     min-width: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 .form-group input[type="number"] {
     flex: 1; /* Ocupará menos espacio el precio */
     min-width: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 .form-group button {
@@ -72,7 +80,7 @@ ul {
 
 li {
     background: #f9fafb;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 10px;
     border: 1px solid #e5e7eb;
     border-radius: 5px;

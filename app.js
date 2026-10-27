@@ -1,13 +1,9 @@
 // Clase que representa cada producto individual
 class Producto {
-    constructor(nombre, precio) {
+    constructor(nombre, precio, stock) {
         this.nombre = nombre;
         this.precio = precio;
-        this.completa = false; // Estado para saber si está disponible/vendido o activo
-    }
-
-    completar() {
-        this.completa = !this.completa;
+        this.stock = stock;
     }
 }
 
@@ -21,12 +17,12 @@ class Inventario {
         this.render();
     }
 
-    agregarProducto(nombre, precio) {
-        if (nombre.trim() === "" || precio === "") {
-            alert("El nombre del producto no puede estar vacío.");
+    agregarProducto(nombre, precio, stock) {
+        if (nombre.trim() === "" || precio === "" || stock === "") {
+            alert("Por favor completa los 3 campos (nombre, precio, stock).");
             return;
         }
-        const nuevoProd = new Producto(nombre, Number(precio));
+        const nuevoProd = new Producto(nombre, Number(precio), Number(stock));
         this.productos.push(nuevoProd);
         this.guardarYRenderizar();
     }
@@ -39,6 +35,7 @@ class Inventario {
     editarProducto(index) {
         const nuevoNombre = prompt("Edita el nombre del producto:", this.productos[index].nombre);
         const nuevoPrecio = prompt("Edita el precio del producto:", this.productos[index].precio);
+        const nuevoStock = prompt("Edita el stock del producto:", this.producto[index].stock);
         if (nuevoNombre !== null && nuevoNombre.trim() !== "") {
             this.productos[index].nombre = nuevoNombre;
             this.guardarYRenderizar();
@@ -46,11 +43,9 @@ class Inventario {
         if (nuevoPrecio !== null && nuevoPrecio.trim() !== "") {
             this.productos[index].precio = Number(nuevoPrecio);
         }
-        this.guardarYRenderizar();
-    }
-
-    cambiarEstado(index) {
-        this.productos[index].completar();
+        if (nuevoStock !== null && nuevoStock.trim() !== "") {
+            this.productos[index].stock = Number(nuevoStock);
+        }
         this.guardarYRenderizar();
     }
 
@@ -67,15 +62,11 @@ class Inventario {
     // Uso de forEach (característica ES6+)
         this.productos.forEach((prod, index) => {
             const li = document.createElement("li");
-            if (prod.completa) {
-                li.classList.add("completa");
-            }
 
             // Uso de template literals para generar el HTML dinámicamente
             li.innerHTML = `
                 <span><strong>${prod.nombre}</strong> - $${prod.precio.toFixed(2)}</span>
                 <div class="acciones">
-                    <button onclick="inventario.cambiarEstado(${index})"></button>
                     <button onclick="inventario.editarProducto(${index})">Editar</button>
                     <button onclick="inventario.eliminarProducto(${index})">Eliminar</button>
                 </div>
@@ -92,8 +83,10 @@ const inventario = new Inventario();
 document.getElementById("agregar-producto").addEventListener("click", () => {
     const inputNombre = document.getElementById("nuevo-producto");
     const inputPrecio = document.getElementById("precio-producto");
-    inventario.agregarProducto(inputNombre.value, inputPrecio.value);
+    const inputStock = document.getElementById("stock-producto");
+    inventario.agregarProducto(inputNombre.value, inputPrecio.value, inputStock.value);
     // Limpiar inputs
     inputNombre.value = "";
     inputPrecio.value = "";
+    inputStock.value = "";
 });
