@@ -35,7 +35,7 @@ class Inventario {
     editarProducto(index) {
         const nuevoNombre = prompt("Edita el nombre del producto:", this.productos[index].nombre);
         const nuevoPrecio = prompt("Edita el precio del producto:", this.productos[index].precio);
-        const nuevoStock = prompt("Edita el stock del producto:", this.producto[index].stock);
+        const nuevoStock = prompt("Edita el stock del producto:", this.productos[index].stock);
         if (nuevoNombre !== null && nuevoNombre.trim() !== "") {
             this.productos[index].nombre = nuevoNombre;
             this.guardarYRenderizar();
