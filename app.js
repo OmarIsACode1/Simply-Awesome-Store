@@ -65,7 +65,7 @@ class Inventario {
 
             // Uso de template literals para generar el HTML dinámicamente
             li.innerHTML = `
-                <span><strong>${prod.nombre}</strong> - $${prod.precio.toFixed(2)}</span>
+                <span><strong>${prod.nombre}</strong> - $${prod.precio.toFixed(2)} | Stock: ${prod.stock}</span>
                 <div class="acciones">
                     <button onclick="inventario.editarProducto(${index})">Editar</button>
                     <button onclick="inventario.eliminarProducto(${index})">Eliminar</button>
